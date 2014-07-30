@@ -1,0 +1,22 @@
+<h1>Todo List</h1>
+<% if current_user %>
+	<%= form_for Task.new do |t| %>
+		<%= t.text_field :name %>
+		<%= t.submit "adicionar!" %>
+	<% end %>
+	<ul id="task">
+		<% current_user.tasks.each do |task| %>
+			<li><%= task.name %></li>
+		<% end %>
+	</ul>
+	<p id="loged-in">
+		Logged in <strong><%= current_user.full_name %></strong>
+		<%= link_to "Sair!!", logout_path %>
+	</p>
+<% else %>
+	<p><strong>Não logado</strong></p>
+	<p>
+		First <%= link_to "Cadastre-se!!", signup_path %>
+		or <%= link_to "Entre!!", login_path %>
+	</p>
+<% end %>
