@@ -14,8 +14,8 @@ class UserSessionsController < ApplicationController
 	end
 
 	def destroy
-		@user_session.destroy
-		redirect_to root_path, :notice => 'deslogado seu gay mother fuck!!'
+		reset_session
+		redirect_to root_path, :notice => 'deslogado manow!!'
 	end
 
 end
