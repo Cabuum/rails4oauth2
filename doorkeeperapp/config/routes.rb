@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
 
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1 do
+      resources :tasks
+      get 'user' => 'users#show'
+    end
+  end
+
   use_doorkeeper
 
   root 'tasks#index'
